@@ -40,38 +40,52 @@ You can use this DNS for your home, so that you make your internet faster.
 
 ## Configuration Details
 
-1. **Docker Compose**
+### 1. Docker Compose
 
-    The docker-compose.yml file sets up the Bind9 DNS server with the following specifications:
+The `docker-compose.yml` file sets up the Bind9 DNS server with the following specifications:
 
-    - Image: ubuntu/bind9:latest
-    - Ports: 53 (TCP and UDP)
-    - Volumes:
-        - Config directory mapped to `/etc/bind`
-        - Cache directory mapped to `/var/cache/bind`
-        - Records directory mapped to `/var/lib/bind`
-    - Environment Variables:
-        - `BIND9_USER`: Set to `root`
-        - `TZ:` Timezone set to `Asia/Kolkata`
+- **Image:** `ubuntu/bind9:latest`
+- **Ports:** 53 (TCP and UDP)
+- **Volumes:**
+  - Config directory mapped to `/etc/bind`
+  - Cache directory mapped to `/var/cache/bind`
+  - Records directory mapped to `/var/lib/bind`
+- **Environment Variables:**
+  - `BIND9_USER`: Set to `root`
+  - `TZ`: Timezone set to `Asia/Kolkata`
 
-2. **DNS Zone Files**
+### 2. DNS Zone Files
 
-    `local-home.zone`
+#### `local-home.zone`
 
-    - Defines the DNS settings for `local.home`.
-    - Contains SOA, NS, and A records.
-    - Remember to update the IP addresses as per your network setup.
+- Defines the DNS settings for the local network domain `local.home`.
+- Contains SOA, NS, and A records.
+- The IP addresses should be updated according to your network setup.
 
-    `sub-domain-com.zone`
+#### `sub-domain-com.zone`
 
-    - Defines the DNS settings for `sub.domain.com`.
-    - Similar structure to `local-home.zone` with customizable A records.
+- Provides DNS settings for the external domain `sub.domain.com`.
+- Has a structure similar to `local-home.zone` with customizable A records.
+- This file is an example of how you can set up a zone for any domain you own.
 
-3. **Named Configuration (`named.conf`)**
+### 3. Named Configuration (`named.conf`)
 
-    - Includes ACLs and options like forwarders and allow-query settings.
-    - Defines the zones `sub.domain.com` and `local.home` with their respective zone files.
+- **ACLs (Access Control Lists):** The configuration starts with defining ACLs to restrict DNS access. This is a crucial step to ensure that your DNS server is not used outside your intended network, enhancing security.
+
+- **Forwarders:** 
+  - Forwarders are DNS servers to which queries are forwarded if the local server does not have the answer.
+  - In this setup, Cloudflare's malware protection DNS servers (`1.1.1.2` and `1.0.0.2`) are used as forwarders. Feel free to substitute these with your preferred DNS servers.
+
+- **Zone Configuration:**
+  - Each domain managed by the DNS server has its own zone configuration.
+  - The `named.conf` file includes definitions for two zones:
+    - `sub.domain.com`: A sample external domain. The corresponding zone file (`sub-domain-com.zone`) includes the necessary DNS records for this domain.
+    - `local.home`: A domain for the local network. The `local-home.zone` file outlines the DNS settings for devices and services within your local network.
+  - These zone files demonstrate how to configure DNS for both local and external domains, providing a template that can be adapted for other domains.
+
+This section of the README gives users a comprehensive understanding of the DNS server's configuration, highlighting the purpose and customization possibilities of each component. It guides them through setting up their own domains and emphasizes the importance of security with ACLs.
+
 
 ## Customization
-'
-    - You can customize the DNS settings by editing the zone files and named.conf as per your requirements. Make sure to update the IP addresses in the zone files to match your network configuration.
+
+You can customize the DNS settings by editing the zone files and named.conf as per your requirements. Make sure to update the IP addresses in the zone files to match your network configuration.
