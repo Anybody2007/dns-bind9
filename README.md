@@ -40,7 +40,7 @@ You can use this DNS for your home, so that you make your internet faster.
 
 ## Configuration Details
 
-**Docker Compose**
+1. **Docker Compose**
 
     The docker-compose.yml file sets up the Bind9 DNS server with the following specifications:
 
@@ -54,7 +54,7 @@ You can use this DNS for your home, so that you make your internet faster.
         - `BIND9_USER`: Set to `root`
         - `TZ:` Timezone set to `Asia/Kolkata`
 
-**DNS Zone Files**
+2. **DNS Zone Files**
 
     `local-home.zone`
 
@@ -67,11 +67,11 @@ You can use this DNS for your home, so that you make your internet faster.
     - Defines the DNS settings for `sub.domain.com`.
     - Similar structure to `local-home.zone` with customizable A records.
 
-**Named Configuration (`named.conf`)**
+3. **Named Configuration (`named.conf`)**
 
     - Includes ACLs and options like forwarders and allow-query settings.
     - Defines the zones `sub.domain.com` and `local.home` with their respective zone files.
 
 ## Customization
-
-    You can customize the DNS settings by editing the zone files and named.conf as per your requirements. Make sure to update the IP addresses in the zone files to match your network configuration.
+'
+    - You can customize the DNS settings by editing the zone files and named.conf as per your requirements. Make sure to update the IP addresses in the zone files to match your network configuration.
