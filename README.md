@@ -83,7 +83,7 @@ The `docker-compose.yml` file sets up the Bind9 DNS server with the following sp
     - `local.home`: A domain for the local network. The `local-home.zone` file outlines the DNS settings for devices and services within your local network.
   - These zone files demonstrate how to configure DNS for both local and external domains, providing a template that can be adapted for other domains.
 
-This section of the README gives users a comprehensive understanding of the DNS server's configuration, highlighting the purpose and customization possibilities of each component. It guides them through setting up their own domains and emphasizes the importance of security with ACLs.
+This section of the README gives users a comprehensive understanding of the DNS server's configuration, highlighting the purpose and customization possibilities of each component. It guides you through setting up your own domains and emphasizes the importance of security with ACLs.
 
 
 ## Customization
