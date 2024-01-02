@@ -12,9 +12,9 @@ $ORIGIN local.home.
 
                 IN      NS      ns.local.home.
 
-ns              IN      A       192.168.30.103
+ns              IN      A       192.168.xx.xxx
 
 ;   IP ADDRESS OF THE UPPER LINE NEEDS TO BE CHANGED AS PER THE REQUIRMENT
 ;   -- add dns records below
 
-router          IN      A       192.168.30.97
+router          IN      A       192.168.xxx.xxx
