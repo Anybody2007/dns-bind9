@@ -19,7 +19,7 @@ You can use this DNS for your home, so that you make your internet faster.
    Clone this repository to your local machine to get started.
 
    ```bash
-   git clone git@github.com:Anybody2007/dns-bind9.git
+   git clone https://github.com/Anybody2007/dns-bind9.git
    ```
 
 2. **Configure DNS Records**
